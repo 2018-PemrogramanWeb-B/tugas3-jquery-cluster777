@@ -1,0 +1,70 @@
+<!Doctype html>
+<html lang="en">
+	<head>
+	<title>Jquery animate</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	
+	<body>
+	<div id=area1>
+	</div>
+	<input type=button value=animation id=button1>
+	<div id=area2>
+		 click change untuk mengganti isi sesuai dengan text input.
+	</div>
+	<input type=text id=nilai>
+	<input type=button value=change id=button2>
+	
+	<div id=area3>
+		<table id=tablex>
+		<tr><td>nama<td>nilai
+		<tr><td>a<td>32
+		<tr><td>aa<td>34
+		<tr><td>b<td>76
+		<tr><td>bb<td>65
+		<tr><td>ab<td>24
+		<tr><td>abc<td>90
+		</table>
+	</div>
+	<input type=text id=search_val>
+	<input type=button value=filter id=button3>
+	</body>
+	<script>
+	$("#button1").click(function(){
+		$("#area1")
+		.html("<b>hello world</b>")
+		.animate({
+			fontSize:'50',width:'500',height:'500',opacity:'0.3'
+		},"slow")
+		.animate({
+			fontSize:'1',width:'100',height:'100',opacity:'1'
+		},"slow")
+	});
+	$("#button2").click(function(){
+		$("#area2").empty()
+		.html("terketik <b>" + $("#nilai").val()+"</b>");
+	});
+	$("#button3").click(function()
+		{
+		var search_val,tr, td, n;
+		var table=document.getElementById("tablex");
+		tr = table.getElementsByTagName("tr");
+		search_val=$("#search_val").val();
+
+		
+		for(var r=1,n=tr.length;r<n;r++){
+			console.log(r);
+			td=tr[r].getElementsByTagName("td")[0];
+			if(td){
+				if(td.innerHTML.search(search_val) > -1){
+					tr[r].style.display = "";
+				}
+				else{tr[r].style.display = "none";continue;
+				}
+			}
+		
+		}
+	});
+	</script>
+</html>
